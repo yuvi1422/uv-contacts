@@ -8,7 +8,6 @@ React Native app for managing rare contacts.
 * [React 17.0.2](https://reactjs.org/)
 * [React Navigation 6.0.2](https://reactnavigation.org/)
 
-<br/>
 
 # Available Scripts
 
