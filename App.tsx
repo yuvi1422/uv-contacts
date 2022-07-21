@@ -1,8 +1,10 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { Provider } from "react-redux";
 
-import useCachedResources from "./src/hooks/useCachedResources";
-import useColorScheme from "./src/hooks/useColorScheme";
+import useCachedResources from "./src/clubhouse/hooks/useCachedResources";
+import useColorScheme from "./src/clubhouse/hooks/useColorScheme";
+import { store } from "./src/clubhouse/redux/store";
 import Navigation from "./src/navigation";
 
 export default function App() {
@@ -14,8 +16,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <Provider store={store}>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </Provider>
       </SafeAreaProvider>
     );
   }

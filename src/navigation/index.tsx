@@ -15,8 +15,8 @@ import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 import ContactsScreen from "../modules/contacts/ContactsScreen";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
+import Colors from "../clubhouse/constants/Colors";
+import useColorScheme from "../clubhouse/hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import SettingsScreen from "../modules/settings/SettingsScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";

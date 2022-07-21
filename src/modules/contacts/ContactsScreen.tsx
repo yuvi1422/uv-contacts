@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
+import { useTypedSelector } from "../../clubhouse/hooks/typedHooks";
 import { RootTabScreenProps } from "../../types";
+import CONTACTS from "./contacts.strings";
 
 const ContactsScreen = ({
   navigation,
   route,
 }: RootTabScreenProps<"Contacts">) => {
+  const contactName = useTypedSelector((state) => state.contacts.name);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
