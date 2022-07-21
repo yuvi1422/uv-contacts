@@ -6,6 +6,7 @@ React Native app for managing rare contacts.
 
 * [React Native 0.68.2](https://reactnative.dev/)
 * [React 17.0.2](https://reactjs.org/)
+* [Redux Toolkit 1.8.3](https://redux-toolkit.js.org/)
 * [React Navigation 6.0.2](https://reactnavigation.org/)
 
 
