@@ -1,23 +1,47 @@
+import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../clubhouse/hooks/typedHooks";
+import UVSectionList from "../../components/UVSectionList";
 import { RootTabScreenProps } from "../../types";
 import CONTACTS from "./contacts.strings";
+import { TContact } from "./contacts.types";
+import cData from "../../../assets/contacts.json";
+import { setContacts } from "./redux/contacts.reducer";
 
 const ContactsScreen = ({
   navigation,
   route,
 }: RootTabScreenProps<"Contacts">) => {
+  const dispatch = useDispatch();
   const contactName = useTypedSelector((state) => state.contacts.name);
+  const contactsData = useTypedSelector((state) => state.contacts.contactsData);
+
+  useEffect(() => {
+    dispatch(setContacts(cData));
+  }, []);
+
+  const handleListItemPress = (contactObj: TContact) => {
+    console.debug(`${contactObj.firstName}`);
+  };
+
+  const getDisplayName = (contactObj: TContact) => {
+    return `${contactObj.firstName}${
+      contactObj.lastName ? " " + contactObj.lastName : ""
+    }`;
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>
-        Contacts of {route?.name} will be here soon
-      </Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+      {contactsData?.length > 0 ? (
+        <UVSectionList
+          sectionData={contactsData}
+          getItem={getDisplayName}
+          handleItemPress={handleListItemPress}
+        />
+      ) : (
+        <Text>{CONTACTS.noData}</Text>
+      )}
     </View>
   );
 };
